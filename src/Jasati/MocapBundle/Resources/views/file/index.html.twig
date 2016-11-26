@@ -1,0 +1,70 @@
+{% extends 'JasatiMocapBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h3><i class="fa fa-database"></i>&ensp;{{ 'lbl_mocap_file' | trans }} <small>{{ 'lbl_mocap_file_desc' | trans }}</small></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-inline" role="form" method="post">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><i class="fa fa-sliders fa-lg"></i>&emsp;{{ 'lbl_search_criteria' | trans }}</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="title">{{ 'lbl_title' | trans }}</label>&emsp;
+                            <input id="title" name="title" class="form-control" value="{{ app.session.get('title') }}" autofocus>&emsp;
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">{{ 'lbl_province' | trans }}</label>&emsp;
+                            <select class="form-control" id="category" name="category">
+                                <option value="0" selected></option>
+                                {% if categories %}
+                                    {% for category in categories %}
+                                        {% if app.session.get('category') == category.id %}
+                                            <option value="{{ category.id }}" selected>{{ category.name }}</option>
+                                        {% else %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </select>&emsp;
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa fa-search fa-lg"></i>&ensp;{{ 'lbl_search' | trans }}&ensp;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--<div class="row">
+        <div class="col-xs-12">
+            {{ 'lbl_legend' | trans}}:&emsp;
+            <i class="fa fa-eye fa-lg text-success"></i> : {{ 'lbl_num_of_preview' | trans}}&emsp;
+            <i class="fa fa-download fa-lg text-danger"></i> : {{ 'lbl_num_of_download' | trans}}&emsp;
+        </div>
+    </div>
+    <br>-->
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% embed 'JasatiMocapBundle:file:list.html.twig' %}{% endembed %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% embed 'JasatiMocapBundle:template:paging.html.twig' %}{% endembed %}
+        </div>
+    </div>
+{% endblock %}

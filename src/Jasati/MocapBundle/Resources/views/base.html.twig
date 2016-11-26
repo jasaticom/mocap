@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ 'lbl_window_title' | trans }}</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/override.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}"/>
+</head>
+
+<body>
+
+{% block nav %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"></div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{{ path('index') }}">
+                            <i class="fa fa-home fa-lg"></i>&ensp;{{ 'lbl_home' | trans}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('profile') }}">
+                            <i class="fa fa-info-circle fa-lg"></i>&ensp;{{'lbl_profile' | trans}}
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="fa fa-file-text fa-lg"></i>&ensp;{{'lbl_file' | trans}}&ensp;<span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('file') }}">&ensp;{{'lbl_browse' | trans}}</a></li>
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="divider"></li>
+                                <li><a href="{{ path('file_upload') }}">&ensp;{{'lbl_upload' | trans}}</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('user') }}">
+                                <i class="fa fa-users fa-lg"></i>&ensp;{{'lbl_user' | trans}}
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    <li>
+                        <a href="{{ path('contact') }}">
+                            <i class="fa fa-phone-square fa-lg"></i>&ensp;{{'lbl_contact_us' | trans}}
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="fa fa-globe fa-lg"></i>&ensp;{{'lbl_language' | trans}}&ensp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ path('change_locale', {locale: 'en'}) }}">{{'lbl_english' | trans}}</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ path('change_locale', {locale: 'id'}) }}">{{'lbl_bahasa' | trans}}</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                                <i class="fa fa-user fa-lg"></i>&ensp;{{ app.user.name }}&ensp;<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('user_profile', {id: app.user.id}) }}">{{'lbl_profile' | trans}}</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('logout') }}">{{'lbl_logout' | trans}}</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="{{ path('login') }}"><i class="fa fa-user fa-lg"></i>&ensp;{{'lbl_login' | trans}}</a></li>
+                        <li><a href="{{ path('user_register') }}"><i class="fa fa-barcode fa-lg"></i>&ensp;{{'lbl_register' | trans}}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer class="footer">
+    <div class="container"><br>
+        <p class="text-muted">{{ 'lbl_copyright' | trans }} &copy; 2016</p>
+    </div>
+</footer>
+
+<script src="{{ asset('assets/js/jquery-2.2.4.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/js/mocap.js') }}"></script>
+<script>var base_url = "{{ url('index') }}";</script>
+
+</body>
+</html>

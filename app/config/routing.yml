@@ -1,0 +1,3 @@
+jasati_hosting:
+    resource: "@JasatiMocapBundle/Controller/"
+    type:     annotation

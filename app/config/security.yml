@@ -1,0 +1,30 @@
+security:
+    encoders:
+        Jasati\MocapBundle\Model\User\AbstractUser: bcrypt
+
+    providers:
+        default:
+            entity:
+                class: Jasati\MocapBundle\Model\User\AbstractUser
+                property: email
+
+    firewalls:
+        default:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+                success_handler:  login_listener
+                login_path: /login
+                check_path: /login
+                csrf_token_generator: security.csrf.token_manager
+                username_parameter: _email
+                remember_me: false
+            logout:
+                path: /logout
+                target: /
+
+    role_hierarchy:
+            ROLE_ADMIN:       ROLE_USER
+
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

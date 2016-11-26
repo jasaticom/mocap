@@ -1,0 +1,21 @@
+{% if maxPage > 1 %}
+    <ul class="pagination pagination">
+        <li {{ currentPage == 1 ? 'class="disabled"' }}>
+            <a href="{{ path(route, {page: 1}) }}">
+                <span class="glyphicon glyphicon-fast-backward"></span>
+            </a>
+        </li>
+
+        {% for i in 1..maxPage %}
+            <li {{ currentPage == i ? 'class="active"' }}>
+                <a href="{{ path(route, {page: i}) }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+
+        <li {{ currentPage == maxPage ? 'class="disabled"' }}>
+            <a href="{{ path(route, {page: maxPage}) }}">
+                <span class="glyphicon glyphicon-fast-forward"></span>
+            </a>
+        </li>
+    </ul>
+{% endif %}

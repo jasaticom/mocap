@@ -1,0 +1,53 @@
+{% extends 'JasatiMocapBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h3><i class="fa fa-users"></i>&ensp;{{ 'lbl_user' | trans }} <small>{{ 'lbl_user_desc' | trans }}</small></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-inline" role="form" method="post">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-sliders fa-lg"></i>&emsp;{{ 'lbl_search_criteria' | trans }}
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="name">{{ 'lbl_name' | trans }}</label>&emsp;
+                            <input id="name" name="name" class="form-control">&emsp;
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">{{ 'lbl_email' | trans }}</label>&emsp;
+                            <input id="email" name="email" class="form-control">&emsp;
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa fa-search fa-lg"></i>&emsp;{{ 'lbl_search' | trans}}&emsp;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% embed 'JasatiMocapBundle:user:list.html.twig' %}{% endembed %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            {% embed 'JasatiMocapBundle:template:paging.html.twig' %}{% endembed %}
+        </div>
+    </div>
+{% endblock %}

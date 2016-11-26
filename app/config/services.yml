@@ -1,0 +1,13 @@
+services:
+    login_listener:
+        class: Jasati\MocapBundle\Model\Event\LoginListener
+        calls:
+            - [setContainer, ['@service_container']]
+        tags:
+            - {name: kernel.event_listener, event: security.interactive_login}
+
+    locale_listener:
+        class: Jasati\MocapBundle\Model\Event\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }

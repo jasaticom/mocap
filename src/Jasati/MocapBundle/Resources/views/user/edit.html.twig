@@ -1,0 +1,67 @@
+{% extends 'JasatiMocapBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h3><i class="fa fa-user"></i>&ensp;{{ 'lbl_user' | trans }}: {{ user.name }} &ensp;-&ensp; {{ 'lbl_edit' | trans}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <form class="form-horizontal" method="POST">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-user fa-lg"></i>&emsp;{{ 'lbl_user_profile' | trans }}
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="email" class="col-xs-3 control-label">{{ 'lbl_email' | trans }}</label>
+                            <div class="col-xs-8">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <input type="email" class="form-control" id="email" name="email" maxlength="16" value="{{ user.email }}">
+                                {% else %}
+                                    <input type="email" class="form-control" id="email" name="email" maxlength="16" value="{{ user.email }}" readonly disabled>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-xs-3 control-label">{{ 'lbl_name' | trans }}</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-xs-3 control-label">{{ 'lbl_old_password' | trans }}</label>
+                            <div class="col-xs-8">
+                                <input type="password" class="form-control" id="oldpassword" name="oldpassword" maxlength="32">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-xs-3 control-label">{{ 'lbl_new_password' | trans }}</label>
+                            <div class="col-xs-8">
+                                <input type="password" class="form-control" id="newpassword" name="newpassword" maxlength="32">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-3"></div>
+                            <div class="col-xs-8">
+                                <button id="view" class="btn btn-success" type="submit">
+                                    <i class="fa fa-floppy-o fa-lg"></i>&emsp;{{ 'lbl_save' | trans}}&emsp;
+                                </button>
+                                <a class="btn btn-warning" href={{ path('user_profile', {id: user.id})}}>
+                                    <i class="fa fa-close fa-lg"></i>&emsp;{{ 'lbl_cancel' | trans}}&emsp;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

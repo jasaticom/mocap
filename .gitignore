@@ -1,0 +1,10 @@
+.idea/
+
+bin/
+var/
+data/
+vendor/
+
+*.sql
+*.bat
+*.lock

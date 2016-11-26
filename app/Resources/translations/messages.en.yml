@@ -1,0 +1,57 @@
+lbl_window_title : Mocap Documentation
+lbl_copyright: Copyright
+
+lbl_home: Home
+lbl_profile: Profile
+lbl_file: File
+lbl_browse: Browse
+lbl_upload: Upload
+lbl_upload_desc: Fill the title and upload your files
+lbl_user: User
+lbl_contact_us: Contact Us
+lbl_logout: Logout
+lbl_login: Login
+lbl_register: Register
+lbl_language: Language
+lbl_english: English
+lbl_bahasa: Bahasa Indonesia
+
+lbl_search_criteria: Search criteria
+lbl_title: Title
+lbl_province: Province
+lbl_search: Search
+
+lbl_mocap_file: Mocap File
+lbl_mocap_file_desc: Browse
+lbl_file_count: File count
+lbl_page: Page
+lbl_file_name: Filename
+lbl_uploader: Uploader
+lbl_upload_date: Upload date
+lbl_file_size: File size
+lbl_num_of_preview: Number of preview
+lbl_num_of_download: Number of download
+lbl_action: Action
+lbl_download: Download
+lbl_delete: Delete
+lbl_registered_only: Registered users only
+
+lbl_user_profile: User profile
+lbl_login_desc: Enter your email and password, and answer the verification number
+lbl_registration_desc: Enter your email, name and password
+lbl_registration: Registration
+
+lbl_email:  Email
+lbl_password: Password
+lbl_name: Name
+lbl_captcha: Captcha
+
+lbl_upload_success: Upload success
+lbl_register_success: Registration completed, please log in to continue
+
+err_upload_failed: Upload failed, make sure the file is not null and the file size is allowed
+err_registration_failed_1: Email or password cannot null or empty
+err_registration_failed_2: Your name cannot empty
+err_registration_failed_3: Wrong captcha
+
+lbl_bvh_file: Bvh file

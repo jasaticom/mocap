@@ -1,0 +1,53 @@
+<table class="table table-bordered">
+    <tr class="bg-primary">
+        <td colspan="12">
+            {{ 'lbl_file_count' | trans }}: {{ recordCount }}&emsp;
+            {{ 'lbl_page' | trans }} {{ currentPage }} / {{ maxPage }}
+        </td>
+    </tr>
+    <tr>
+        <th width="1%" class="odd"></th>
+        <th class="col-xs-2 vertical-align odd">{{ 'lbl_title' | trans }}</th>
+        <th class="col-xs-2 vertical-align odd">{{ 'lbl_province' | trans }}</th>
+        <th class="col-xs-2 vertical-align odd">{{ 'lbl_file_name' | trans }}</th>
+        <th class="col-xs-1 vertical-align odd">{{ 'lbl_uploader' | trans }}</th>
+        <th class="col-xs-1 vertical-align odd">{{ 'lbl_upload_date' | trans }}</th>
+        <th class="col-xs-1 vertical-align odd">{{ 'lbl_file_size' | trans }}</th>
+        <!--<th class="vertical-align text-center odd"><i class="fa fa-eye fa-lg text-success"></i></th>
+        <th class="vertical-align text-center odd"><i class="fa fa-download fa-lg text-danger"></i></th>-->
+        <th class="odd">{{ 'lbl_action' | trans }}</th>
+    </tr>
+    {% if files %}
+        {% embed 'JasatiMocapBundle:template:player.html.twig' %}{% endembed %}
+        {% for file in files %}
+            <tr>
+                <td class="vertical-align">{{ (currentPage - 1) * limit + loop.index }}</td>
+                <th class="vertical-align">
+                    <a class="preview" href="{{ path('file_preview',{id: file.id}) }}">{{ file.title }}</a>
+                </th>
+                <td class="vertical-align">{{ file.category.name }}</td>
+                <td class="vertical-align">{{ file.originalfilename }}</td>
+                <td class="vertical-align">{{ file.user.name }}</td>
+                <td class="vertical-align text-center">{{ file.createdtime | date("d-m-Y") }}</td>
+                <td class="vertical-align">{{ file.getsizein }} Mb</td>
+                <!--<td class="vertical-align text-center">{{ file.previewcount }}</td>
+                <td class="vertical-align text-center">{{ file.downloadcount }}</td>-->
+                <td>
+                    {% if(file.ispublic) %}
+                        <a class="btn btn-success" href="{{ path('file_download', {id: file.id}) }}">{{ 'lbl_download' | trans }}</a>
+                    {% else %}
+                        {% if is_granted('ROLE_USER') %}
+                            <a class="btn btn-default" href="{{ path('file_download', {id: file.id}) }}">{{ 'lbl_download' | trans }}</a>
+                        {% else %}
+                            <i>{{ 'lbl_registered_only' | trans }}</i>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        &ensp;<a class="btn btn-danger delete-file" href="{{ path('file_remove', {id: file.id}) }}">{{ 'lbl_delete' | trans }}</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>

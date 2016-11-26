@@ -1,0 +1,57 @@
+lbl_window_title : Dokumentasi Mocap
+lbl_copyright: Hak Cipta
+
+lbl_home: Beranda
+lbl_profile: Profil
+lbl_file: Berkas
+lbl_browse: Jelajah
+lbl_upload: Unggal
+lbl_upload_desc: Unggal file anda
+lbl_user: Pengguna
+lbl_contact_us: Hubungi kami
+lbl_logout: Keluar
+lbl_login: Masuk
+lbl_register: Daftar
+lbl_language: Bahasa
+lbl_english: English
+lbl_bahasa: Bahasa Indonesia
+
+lbl_search_criteria: Kriteria pencarian
+lbl_title: Judul
+lbl_province: Provinsi
+lbl_search: Cari
+
+lbl_mocap_file: File Mocap
+lbl_mocap_file_desc: Jelajah
+lbl_file_count: Jumlah berkas
+lbl_page: Halaman
+lbl_file_name: Nama file
+lbl_uploader: Uploader
+lbl_upload_date: Tgl. Upload
+lbl_file_size: Ukuran
+lbl_num_of_preview: Jumlah dilihat
+lbl_num_of_download: Jumlah diunduh
+lbl_action: Tindakan
+lbl_download: Unduh
+lbl_delete: Hapus
+lbl_registered_only: Hanya pengguna terdaftar
+
+lbl_user_profile: Profil pengguna
+lbl_login_desc: Masukkan email dan password lalu masukkan nomor verifikasi
+lbl_registration_desc: Masukkan email nama dan password
+lbl_registration: Registrasi
+
+lbl_email:  Email
+lbl_password: Kata kunci
+lbl_name: Nama
+lbl_captcha: Captcha
+
+lbl_upload_success: Upload berhasil
+lbl_register_success: Registrasi selesai, silahkan masuk untuk melanjutkan
+
+err_upload_failed: Upload gagal, pastikan file tidak kosong dan ukuran file diizinkan
+err_registration_failed_1: Email atau kata kunci tidak boleh kosong
+err_registration_failed_2: Nama anda tidak boleh kosong
+err_registration_failed_3: Nomor verifikasi (captcha) salah
+
+content1: test bahasa kindo

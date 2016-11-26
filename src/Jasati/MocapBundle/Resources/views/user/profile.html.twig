@@ -1,0 +1,85 @@
+{% extends 'JasatiMocapBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h3><i class="fa fa-user"></i>&ensp;{{ 'lbl_user' | trans }}: {{ user.name }}</h3>
+            </div>
+        </div>
+    </div>
+
+    {% if app.session.flashBag.has('success') %}
+        <div class="row">
+            <div class="col-xs-8">
+                <div id="notification" class="alert alert-success">
+                    <i class="fa fa-check fa-lg"></i>&ensp;
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg | trans }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if app.session.flashBag.has('error') %}
+        <div class="row">
+            <div class="col-xs-8">
+                <div id="notification" class="alert alert-danger">
+                    <i class="fa fa-ban fa-lg"></i>&ensp;
+                    {% for msg in app.session.flashBag.get('error') %}
+                        {{ msg | trans }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form class="form-horizontal">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><i class="fa fa-user fa-lg"></i>&emsp;{{ 'lbl_user_profile' | trans }}</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="email" class="col-xs-3 control-label">{{ 'lbl_email' | trans }}</label>
+                            <div class="col-xs-8">
+                                <span class="form-control">{{ user.email }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-xs-3 control-label">{{ 'lbl_name' | trans }}</label>
+                            <div class="col-xs-8">
+                                <span class="form-control">{{ user.name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-xs-3 control-label">{{ 'lbl_registered_date' | trans }}</label>
+                            <div class="col-xs-8">
+                                <span class="form-control">{{ user.createdTime | date('d M Y, H:i:s') }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-xs-3 control-label">{{ 'lbl_last_activity' | trans }}</label>
+                            <div class="col-xs-8">
+                                <span class="form-control">{{ user.getlastevent.time | date('d M Y, H:i:s') }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-3"></div>
+                            <div class="col-xs-8">
+                                <a class="btn btn-warning" href={{ path('user_edit', {id: user.id}) }}>
+                                    <i class="fa fa-edit fa-lg"></i>&emsp;{{ 'lbl_edit' | trans}}&emsp;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

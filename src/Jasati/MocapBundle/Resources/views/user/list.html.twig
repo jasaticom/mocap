@@ -1,0 +1,31 @@
+<table class="table table-bordered">
+    <tr class="bg-primary">
+        <td colspan="12">
+            {{ 'lbl_user_count' | trans }}: {{ recordCount }}&emsp;
+            {{ 'lbl_page' | trans }} {{ currentPage }} / {{ maxPage }}
+        </td>
+    </tr>
+    <tr>
+        <th width="1%" class="odd"></th>
+        <th class="col-xs-2 odd">{{ 'lbl_name' | trans}}</th>
+        <th class="col-xs-2 odd">{{ 'lbl_registered_date' | trans}}</th>
+        <th class="col-xs-2 odd">{{ 'lbl_last_activity' | trans}}</th>
+        <th class="odd">{{ 'lbl_email' | trans}}</th>
+    </tr>
+    {% if users %}
+        {% for user in users %}
+            <tr>
+                <td class="vertical-align">{{ (currentPage - 1) * limit + loop.index }}</td>
+                <th class="vertical-align">
+                    <a href="{{ path('user_profile', {id: user.id}) }}">{{ user.name }}</a>
+                    {% if user.isadmin %}
+                        &ensp;<i class="fa fa-star fa-lg text-warning"></i>
+                    {% endif %}
+                </th>
+                <td class="vertical-align">{{ user.createdtime | date('d M Y, H:i:s') }}</td>
+                <td class="vertical-align">{{ user.getlastevent.time | date('d M Y, H:i:s') }}</td>
+                <td class="vertical-align">{{ user.email }}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
