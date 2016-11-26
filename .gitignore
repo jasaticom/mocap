@@ -4,6 +4,4 @@ var/
 data/
 vendor/
 
-*.sql
-*.bat
 *.lock

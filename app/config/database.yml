@@ -4,11 +4,11 @@ doctrine:
         connections:
             default:
                 driver:   mysqli
-                host:     mysql.idhostinger.com
+                host:     localhost
                 port:     3306
-                dbname:   u884380406_mocap
-                user:     u884380406_mocap
-                password: f7X42lEKFw
+                dbname:   mocap
+                user:     root
+                password:
 
                 charset:  utf8
                 default_table_options:
