@@ -8,4 +8,4 @@ data/
 vendor/
 
 *.lock
-nbproject
+nbproject/
