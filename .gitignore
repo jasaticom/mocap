@@ -1,6 +1,9 @@
 .idea/
 
-var/
+var/cache/
+var/logs/
+var/sessions/
+
 data/
 vendor/
 
