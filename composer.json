@@ -18,17 +18,34 @@
       "doctrine/doctrine-cache-bundle": "^1.2",
       "symfony/monolog-bundle": "^2.8",
       "sensio/framework-extra-bundle": "^3.0.2",
+      "sensio/distribution-bundle": "^5.0",
       "gregwar/captcha-bundle": "^2.0",
-        "paragonie/random_compat": " ~1.4"
+    "paragonie/random_compat": " ~1.4"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0",
         "phpunit/phpunit": "4.*",
         "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
+        ]
+    },
     "config": {
         "platform": {
             "php": "5.6.24"
         }
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web"
     }
 }
